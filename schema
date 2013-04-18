@@ -1,0 +1,119 @@
+
+db_host: 129.105.126.34
+db_name: voxsup-twitter
+
+
+collections:
+{
+	wordpress_popular_blogs
+	wordpress_posts
+	wordpress_comments
+}
+
+
+
+wordpress_popular_blogs:
+{
+	ID	Number
+	name	String
+	description	String
+	URL	String
+	total_posts	Number
+	thread_id	number	
+	entry_time	ISODate
+	last_update	String
+	last_update_unix	Number
+	meta 	Array
+	{
+		links	Array
+		{
+			self	String
+			help	String
+			posts	String
+			comments	String
+		}
+	}
+}
+
+
+
+
+wordpress_posts:
+{
+	ID	Number
+	author	Array
+	{
+		ID	Number
+		email	Boolean
+		name	String
+		URL	Url
+		avatar_URL	Url
+		profile_URL	Url
+	}
+	date	String
+	date_unix	Number
+	modified	String
+	title	String
+	URL	Url
+	short_URL	Url
+	blog_URL	Url
+	content	Html
+	excerpt	Html
+	slug	String
+	status	String
+	password	String
+	parent	Boolean
+	type	String
+	comments_open	Boolean
+	pings_open	Boolean
+	comment_count	Number
+	like_count	Number
+	featured_image	Url
+	format	String
+	geo	Array
+	{
+		latitude	Number
+		longitude	Number
+		address	String
+	}
+	tags	Array(String)
+	categories	Array(String)	
+	attachments	Array(String)					
+}
+
+
+
+
+wordpress_comments:
+{
+	ID	Number
+	post	Array
+	{
+		ID	Number
+		type	String
+		link	Url
+	}
+	author	Array
+	{
+		ID	Number
+		email	Boolean
+		name	String
+		URL	Url
+		avatar_URL	Url
+		profile_URL	Url
+	}
+	date	String
+	date_unix	Number
+	URL	Url
+	short_URL	Url
+	content	Html
+	status	String
+	parent	Array
+	{
+		ID	Number
+		type	String
+		link	Url		
+	}
+	type	String
+	meta	Object
+}

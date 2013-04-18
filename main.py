@@ -71,7 +71,7 @@ def main():
             blog.get(blogname, config)
                                         
         
-        '''
+        
         error.log_debug("Assigning threads..", 2, config)
         utility.assign_thread()
         
@@ -82,7 +82,7 @@ def main():
         for i in range(0, config.max_thread):        
             os.system("./main.py -thread -tid %s > /dev/null &" % (str(i)))
             time.sleep(2)
-        '''    
+            
             
 
 if __name__ == '__main__':

@@ -82,8 +82,7 @@ def main():
         for i in range(0, config.max_thread):        
             os.system("./main.py -thread -tid %s > /dev/null &" % (str(i)))
             time.sleep(2)
-            
-            
+
 
 if __name__ == '__main__':
     main()

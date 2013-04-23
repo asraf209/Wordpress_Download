@@ -79,8 +79,14 @@ def get(blogname, post_id, config):
 def get_unix_timestamp(dt_str):    
     try:        
         ts = utility.timestamp(dt_str)
-        return ts
-    
-    except Exception as err:
-        return utility.timestamp(dt_str[:19] + '+00:00')            
+        return ts    
+    except Exception as err:        
+        fix_invalid_date(dt_str)
         
+        
+        
+def fix_invalid_date(dt_str):       # handle datetime with wrong TZ or date older than 1970-01-01
+    try:
+        return utility.timestamp(dt_str[:19] + '+00:00')
+    except Exception as err:
+        return utility.timestamp('1970-01-01T00:00:00+00:00')

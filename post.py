@@ -148,10 +148,10 @@ def get_unix_timestamp(dt_str1, dt_str2):
             try:
                 ts = utility.timestamp(new_dt1)     
                 return ts
-            except Exception as err:
-                return utility.timestamp(dt_str1[:19] + '+00:00')        
-        else:
-            return utility.timestamp(dt_str1[:19] + '+00:00')            
+            except Exception as err:                
+                fix_invalid_date(new_dt1)
+        else:            
+            fix_invalid_date(dt_str1)
 
 
 
@@ -160,3 +160,12 @@ def replace_TZ(dt_str1, dt_str2):
     str2_tz = dt_str2[19:len(dt_str2)]            
     new_dt = str1_dt + str2_tz
     return new_dt
+
+
+
+def fix_invalid_date(dt_str):       # handle datetime with wrong TZ or date older than 1970-01-01
+    try:
+        return utility.timestamp(dt_str[:19] + '+00:00')
+    except Exception as err:
+        return utility.timestamp('1970-01-01T00:00:00+00:00')
+    

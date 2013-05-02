@@ -53,7 +53,7 @@ def main():
         
             
     else:
-        error.log_debug("\n\nStarting.. %s" % (datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S GMT")), 2, config)
+        error.log_debug("\n\nStarting.. %s" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), 2, config)
         error.log_debug("Getting all popular wordpress blogs..", 2, config)
         
         blogs = top_blogs.get_popular_sites()
